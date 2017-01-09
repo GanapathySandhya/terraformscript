@@ -1,3 +1,13 @@
+
+Given below are sample for code for the following customizations 
+that can be done for a guest vm created by terraform.
+
+1. Time Zone
+2. dns_suffix
+3. admin_password change
+4. ssh using private key
+5. Joining a windows vm to a domain.
+
 ------------------
 Time Zone in Linux
 ------------------
@@ -20,7 +30,6 @@ ssh using private key
 ---------------------
 
 
-# Code to copy the public key to remote machine
 "provisioner": {
                    "file": {
                      "source" : "<path to public key in local machine>",
@@ -32,8 +41,7 @@ ssh using private key
                      }
                 }
             },
-# code to create .ssh directory and move the temporary file to authorized keys
-            "provisioner": {
+"provisioner": {
                   "remote-exec": {
                       "inline" : [
                           "mkdir -p /home/<user>/.ssh/",
@@ -65,6 +73,7 @@ Verify by logging into the windows vm using password "test"
 ------------------------------
 Joining windows_vm to a domain
 ------------------------------
+
 
 "network_interface": {
                     "label": "Backbone",
